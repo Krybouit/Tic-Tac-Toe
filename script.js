@@ -2,12 +2,8 @@ let gameBoard = (function() {
     let board = [[1, 2, 3],
                  [4, 5, 6],
                  [7, 8, 9]];
-
-    function getBoard() {
-        return board;
-    }
     
-    return getBoard()
+    return board;
 })();
 
 let activePlayer = (() => {
@@ -147,9 +143,13 @@ function gameController() {
             console.log("Player one's turn (X)")
             switchPlayers()
         } 
+
+        else if(move === null) {
+            return;
+        }
         
         else {
-            alert("Spot is already taken, choose again")
+            alert("Spot is already taken / wrong input, please choose again")
         }
       } 
 
@@ -158,9 +158,12 @@ function gameController() {
     
 };
 
-console.log("Type gameController() in the console to start playing")
-console.log("Player one's turn (X)")
-for (let element of gameBoard) {
-    let rowString = element.join(" ")
-    console.log(rowString);
-  }
+
+(function startMessage() {
+    console.log("Type gameController() in the console to start playing")
+    console.log("Player one's turn (X)")
+    for (let element of gameBoard) {
+        let rowString = element.join(" ")
+        console.log(rowString);
+    }
+})();
