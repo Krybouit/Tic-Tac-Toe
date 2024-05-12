@@ -16,7 +16,6 @@ const printBoard = () => {
 let activePlayer = (() => {
     let currentPlayer = "player one";
     return currentPlayer;
-    
 })()
 
 
@@ -247,6 +246,19 @@ function gameController() {
     checkWinner()
 };
 
+function screenController() {
+    const screenBoard = document.querySelector(".board");
+    
+    gameBoard.forEach(row => {
+        row.forEach((item) => {
+          const cellButton = document.createElement("button");
+          cellButton.classList.add("cell");
+          cellButton.textContent = item;
+          screenBoard.appendChild(cellButton);
+        })
+      })
+}
+
 
 (function startMessage() {
     console.log("Type gameController() in the console to start playing")
@@ -254,3 +266,4 @@ function gameController() {
     printBoard()
 })();
 
+screenController()

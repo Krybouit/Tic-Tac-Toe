@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    height: 950px;
+}
+
+
+.board {
+    display: grid;
+    grid-template-columns: 110px 110px 110px;
+    align-content: center;
+}
+
+.cell {
+    height: 110px;
+}
