@@ -25,124 +25,124 @@ let currentTurn = (() => {
     
 })()
 
-function gameController() {
+
+function gameController(cell,symbol) {
 
     const switchPlayers = () => {
-       if (activePlayer === "player one") {
-        activePlayer = "player two";
-        console.log("Player two's turn (O)")
+        if (activePlayer === "player one") {
+         activePlayer = "player two";
+         console.log("Player two's turn (O)")
+    
+     } else if (activePlayer === "player two") {
+         activePlayer = "player one";
+         console.log("Player one's turn (X)")
+        }
+     };
 
-    } else if (activePlayer === "player two") {
-        activePlayer = "player one";
-        console.log("Player one's turn (X)")
-       }
-    };
-   
-   let move = prompt("Choose board place (1-9)");
 
       const playRound = () => {
-        if(move === "1" & activePlayer === "player one" & gameBoard[0][0] === 1) {
+        if(cell === "cell-1" & symbol === "X" & activePlayer === "player one" & gameBoard[0][0] === 1) {
             gameBoard[0][0] = "X"
             printBoard()
             switchPlayers()
             currentTurn++
-        } else if(move === "1" & activePlayer === "player two" & gameBoard[0][0] === 1) {
+        } else if(cell === "cell-1" & symbol === "O" & activePlayer === "player two" & gameBoard[0][0] === 1) {
             gameBoard[0][0] = "O"
             printBoard()
             switchPlayers()
             currentTurn++
         } 
         
-        else if(move === "2" & activePlayer === "player one" & gameBoard[0][1] === 2) {
+        else if(cell === "cell-2" & symbol === "X" & activePlayer === "player one" & gameBoard[0][1] === 2) {
             gameBoard[0][1] = "X"
             printBoard()
             switchPlayers()
             currentTurn++
-        } else if(move === "2" & activePlayer === "player two" & gameBoard[0][1] === 2) {
+        } else if(cell === "cell-2" & symbol === "O" & activePlayer === "player two" & gameBoard[0][1] === 2) {
             gameBoard[0][1] = "O"
             printBoard()
             switchPlayers()
             currentTurn++
         } 
         
-        else if(move === "3" & activePlayer === "player one" & gameBoard[0][2] === 3) {
+        else if(cell === "cell-3" & symbol === "X" & activePlayer === "player one" & gameBoard[0][2] === 3) {
             gameBoard[0][2] = "X"
             printBoard()
             switchPlayers()
             currentTurn++
-        } else if(move === "3" & activePlayer === "player two" & gameBoard[0][2] === 3) {
+        } else if(cell === "cell-3" & symbol === "O" & activePlayer === "player two" & gameBoard[0][2] === 3) {
             gameBoard[0][2] = "O"
             printBoard()
             switchPlayers()
             currentTurn++
         } 
         
-        else if(move === "4" & activePlayer === "player one" & gameBoard[1][0] === 4) {
+        else if(cell === "cell-4" & symbol === "X" & activePlayer === "player one" & gameBoard[1][0] === 4) {
             gameBoard[1][0] = "X"
             printBoard()
             switchPlayers()
             currentTurn++
-        } else if(move === "4" & activePlayer === "player two" & gameBoard[1][0] === 4) {
+        } else if(cell === "cell-4" & symbol === "O" & activePlayer === "player two" & gameBoard[1][0] === 4) {
             gameBoard[1][0] = "O"
             printBoard()
             switchPlayers()
             currentTurn++
         } 
         
-        else if(move === "5" & activePlayer === "player one" & gameBoard[1][1] === 5) {
+        else if(cell === "cell-5" & symbol === "X" & activePlayer === "player one" & gameBoard[1][1] === 5) {
             gameBoard[1][1] = "X"
             printBoard()
             switchPlayers()
             currentTurn++
-        } else if(move === "5" & activePlayer === "player two" & gameBoard[1][1] === 5) {
+        } else if(cell === "cell-5" & symbol === "O" & activePlayer === "player two" & gameBoard[1][1] === 5) {
             gameBoard[1][1] = "O"
             printBoard()
             switchPlayers()
             currentTurn++
         }
 
-        else if(move === "6" & activePlayer === "player one" & gameBoard[1][2] === 6) {
+        else if(cell === "cell-6" & symbol === "X" & activePlayer === "player one" & gameBoard[1][2] === 6) {
             gameBoard[1][2] = "X"
             printBoard()
             switchPlayers()
             currentTurn++
-        } else if(move === "6" & activePlayer === "player two" & gameBoard[1][2] === 6) {
+        } else if(cell === "cell-6" & symbol === "O" & activePlayer === "player two" & gameBoard[1][2] === 6) {
             gameBoard[1][2] = "O"
             printBoard()
             switchPlayers()
             currentTurn++
         }
 
-        else if(move === "7" & activePlayer === "player one" & gameBoard[2][0] === 7) {
+        else if(cell === "cell-7" & symbol === "X" & activePlayer === "player one" & gameBoard[2][0] === 7) {
             gameBoard[2][0] = "X"
             printBoard()
             switchPlayers()
             currentTurn++
-        } else if(move === "7" & activePlayer === "player two" & gameBoard[2][0] === 7) {
+        } else if(cell === "cell-7" & symbol === "O" & activePlayer === "player two" & gameBoard[2][0] === 7) {
             gameBoard[2][0] = "O"
             printBoard()
             switchPlayers()
             currentTurn++
         }
 
-        else if(move === "8" & activePlayer === "player one" & gameBoard[2][1] === 8) {
+        else if(cell === "cell-8" & symbol === "X" & activePlayer === "player one" & gameBoard[2][1] === 8) {
             gameBoard[2][1] = "X"
             printBoard()
             switchPlayers()
             currentTurn++
-        } else if(move === "8" & activePlayer === "player two" & gameBoard[2][1] === 8) {
+        } else if(cell === "cell-8" & symbol === "O" & activePlayer === "player two" & gameBoard[2][1] === 8) {
             gameBoard[2][1] = "O"
             printBoard()
             switchPlayers()
             currentTurn++
         }
 
-        else if(move === "9" & activePlayer === "player one" & gameBoard[2][2] === 9) {
+        else if(cell === "cell-9" & symbol === "X" & activePlayer === "player one" & gameBoard[2][2] === 9) {
             gameBoard[2][2] = "X"
             printBoard()
             switchPlayers()
             currentTurn++
-        } else if(move === "9" & activePlayer === "player two" & gameBoard[2][2] === 9) {
+        } else if(cell === "cell-9" & symbol === "O" & activePlayer === "player two" & gameBoard[2][2] === 9) {
             gameBoard[2][2] = "O"
             printBoard()
             switchPlayers()
@@ -151,10 +151,6 @@ function gameController() {
 
         else if(move === null) {
             return;
-        }
-        
-        else {
-            alert("Spot is already taken / wrong input, please choose again")
         }
     } 
 
@@ -248,22 +244,23 @@ function gameController() {
 
 function screenController() {
     const screenBoard = document.querySelector(".board");
-    
-    gameBoard.forEach(row => {
-        row.forEach((item) => {
-          const cellButton = document.createElement("button");
-          cellButton.classList.add("cell");
-          cellButton.textContent = item;
-          screenBoard.appendChild(cellButton);
-        })
-      })
+ 
+    screenBoard.addEventListener("click", function(e) {
+        if (e.target.className !== "cell") {
+            return;
+        } else if (e.target.textContent !== "X" & e.target.textContent !== "O" & activePlayer === "player one") {
+            e.target.textContent = "X"
+            gameController(e.target.id, e.target.textContent);
+        } else if (e.target.textContent !== "X" & e.target.textContent !== "O" & activePlayer === "player two") {
+            e.target.textContent = "O"
+            gameController(e.target.id, e.target.textContent);
+        }
+    })
 }
-
 
 (function startMessage() {
     console.log("Type gameController() in the console to start playing")
     console.log("Player one's turn (X)")
     printBoard()
+    screenController()
 })();
-
-screenController()
