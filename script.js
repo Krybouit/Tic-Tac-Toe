@@ -250,9 +250,11 @@ function screenController() {
             return;
         } else if (e.target.textContent !== "X" & e.target.textContent !== "O" & activePlayer === "player one") {
             e.target.textContent = "X"
+            e.target.style.color = "Red"
             gameController(e.target.id, e.target.textContent);
         } else if (e.target.textContent !== "X" & e.target.textContent !== "O" & activePlayer === "player two") {
             e.target.textContent = "O"
+            e.target.style.color = "Blue"
             gameController(e.target.id, e.target.textContent);
         }
     })
