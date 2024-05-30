@@ -13,34 +13,64 @@ body {
     src: url(Fonts/colored-crayons-font/ColoredCrayons-7wPR.ttf);
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    height: 750px;
-}
-
 header {
     display: flex;
     justify-content: center;
     color: white;
     font-family: ColoredCrayons, sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 60px;
+    font-size: 100px;
     margin-top: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 750px;
+}
+
+.container h2 {
+    font-family: ColoredCrayons, sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    font-size: 50px;
+    margin-top: 20px;
+    border: none;
 }
 
 .board {
     display: grid;
-    grid-template-columns: repeat(3, 140px);
-    grid-template-rows: repeat(3, 140px);
+    grid-template-columns: repeat(3, 160px);
+    grid-template-rows: repeat(3, 160px);
     align-content: center;
+    margin-top: 57px;
 }
 
 .cell {
     font-family: ColoredCrayons, sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 100px;
+    font-size: 142px;
+
+    border-color: black;
+}
+
+.modal {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    background: rgba(0, 0, 0, 0);
+}
+
+dialog:-internal-dialog-in-top-layer::backdrop {
+    position: fixed;
+    inset: 0px;
+    background: rgba(0, 0, 0, 0);
 }
 
 
-button {
-    border-color: black;
+.modal h2 {
+    font-family: ColoredCrayons, sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    font-size: 50px;
+    color: red;
+    border: none;
 }
