@@ -6,55 +6,41 @@ const gameBoard = (() => {
     return board;
 })();
 
-const printBoard = () => {
-    for (let element of gameBoard) {
-        const rowString = element.join(" ")
-        console.log(rowString);
-      }
-}
-
 const gameController = () => {
     let turn = 0;
     let currentPlayer = "player one"
     let winner = "";
-    let isOver = false;
+    let isOver = true;
 
     const switchPlayers = () => {
         if (currentPlayer === "player one") {
-         currentPlayer = "player two";
-         console.log("Player two's turn (O)")
-    
-     } else if (currentPlayer === "player two") {
+         currentPlayer = "player two";   
+        } else if (currentPlayer === "player two") {
          currentPlayer = "player one";
-         console.log("Player one's turn (X)")
         }
      };
 
       const playRound = (cell) => {
         if(cell === "cell-1" & currentPlayer === "player one" & gameBoard[0][0] === 1) {
             gameBoard[0][0] = "X"
-            printBoard()
             switchPlayers()
             turn++
         } else if(cell === "cell-1" & currentPlayer === "player two" & gameBoard[0][0] === 1) {
             gameBoard[0][0] = "O"
-            printBoard()
             switchPlayers()
             turn++
-        } 
-        
+        }
+
         else if(cell === "cell-2" & currentPlayer === "player one" & gameBoard[0][1] === 2) {
             gameBoard[0][1] = "X"
-            printBoard()
             switchPlayers()
             turn++
         } else if(cell === "cell-2" & currentPlayer === "player two" & gameBoard[0][1] === 2) {
             gameBoard[0][1] = "O"
-            printBoard()
             switchPlayers()
             turn++
-        } 
-        
+        }   
+
         else if(cell === "cell-3" & currentPlayer === "player one" & gameBoard[0][2] === 3) {
             gameBoard[0][2] = "X"
             printBoard()
@@ -62,83 +48,70 @@ const gameController = () => {
             turn++
         } else if(cell === "cell-3" & currentPlayer === "player two" & gameBoard[0][2] === 3) {
             gameBoard[0][2] = "O"
-            printBoard()
             switchPlayers()
             turn++
-        } 
-        
+        }   
+
         else if(cell === "cell-4" & currentPlayer === "player one" & gameBoard[1][0] === 4) {
             gameBoard[1][0] = "X"
-            printBoard()
             switchPlayers()
             turn++
         } else if(cell === "cell-4" & currentPlayer === "player two" & gameBoard[1][0] === 4) {
             gameBoard[1][0] = "O"
-            printBoard()
             switchPlayers()
             turn++
-        } 
-        
+        }    
+
         else if(cell === "cell-5" & currentPlayer === "player one" & gameBoard[1][1] === 5) {
             gameBoard[1][1] = "X"
-            printBoard()
             switchPlayers()
             turn++
         } else if(cell === "cell-5" & currentPlayer === "player two" & gameBoard[1][1] === 5) {
             gameBoard[1][1] = "O"
-            printBoard()
             switchPlayers()
             turn++
         }
 
         else if(cell === "cell-6" & currentPlayer === "player one" & gameBoard[1][2] === 6) {
             gameBoard[1][2] = "X"
-            printBoard()
             switchPlayers()
             turn++
         } else if(cell === "cell-6" & currentPlayer === "player two" & gameBoard[1][2] === 6) {
             gameBoard[1][2] = "O"
-            printBoard()
             switchPlayers()
             turn++
         }
 
         else if(cell === "cell-7" & currentPlayer === "player one" & gameBoard[2][0] === 7) {
             gameBoard[2][0] = "X"
-            printBoard()
             switchPlayers()
             turn++
         } else if(cell === "cell-7" & currentPlayer === "player two" & gameBoard[2][0] === 7) {
             gameBoard[2][0] = "O"
-            printBoard()
             switchPlayers()
             turn++
         }
 
         else if(cell === "cell-8" & currentPlayer === "player one" & gameBoard[2][1] === 8) {
             gameBoard[2][1] = "X"
-            printBoard()
             switchPlayers()
             turn++
         } else if(cell === "cell-8" & currentPlayer === "player two" & gameBoard[2][1] === 8) {
             gameBoard[2][1] = "O"
-            printBoard()
             switchPlayers()
             turn++
         }
 
         else if(cell === "cell-9" & currentPlayer === "player one" & gameBoard[2][2] === 9) {
             gameBoard[2][2] = "X"
-            printBoard()
             switchPlayers()
             turn++
         } else if(cell === "cell-9" & currentPlayer === "player two" & gameBoard[2][2] === 9) {
             gameBoard[2][2] = "O"
-            printBoard()
             switchPlayers()
             turn++
         } 
-
+        
         else if(cell === null) {
             return;
         }
@@ -175,8 +148,6 @@ const gameController = () => {
             winner = "Player one Won!!"
         }
     
-
-    
         if(gameBoard[0][0] === "O" & gameBoard[0][1] === "O" & gameBoard[0][2] === "O") {
             isOver = true
             winner = "Player two Won!!"
@@ -206,8 +177,10 @@ const gameController = () => {
     } 
 
     const getIsOver = (event) => {
-        if (event === "reset") {
+        if (event === "start") {
             isOver = false
+        } else if (event === "reset") {
+            isOver = true
         } else {
             return isOver;
         }
@@ -244,22 +217,34 @@ const screenController = () => {
     const cells = document.querySelector(".board").children;
     const showCurrentTurn = document.querySelector(".current-turn");
     const resetBtn = document.querySelector(".reset");
+    const startBtn = document.querySelector(".start");
+    const playerOneName = document.querySelector(".player-one");
+    const playerTwoName = document.querySelector(".player-two")
+    const form = document.getElementById("form")
     const game = gameController();
     screenBoard.addEventListener("click", handler)
     resetBtn.addEventListener("click", resetGame)
+    startBtn.addEventListener("click", startGame)
+
+    function startGame() {
+        game.getIsOver("start")
+        form.style.display = "none"
+        showCurrentTurn.style.display = "block"
+        showCurrentTurn.innerHTML = playerOneName.value === "" ? "Player one's turn" : `${playerOneName.value}'s turn`
+    }
 
     function handler(e) {
         if (game.getIsOver()) {
             return;
         } else if (e.target.textContent !== "X" & e.target.textContent !== "O" & game.getCurrentPlayer() === "player one") {
             e.target.textContent = "X"
-            e.target.style.color = "Red" 
-            showCurrentTurn.textContent = "Player two's turn"
+            e.target.style.color = "Red"
+            showCurrentTurn.textContent = playerTwoName.value === "" ? "Player two's turn" : `${playerTwoName.value}'s turn`;
             game.playRound(e.target.id);
         } else if (e.target.textContent !== "X" & e.target.textContent !== "O" & game.getCurrentPlayer() === "player two") {
             e.target.textContent = "O"
             e.target.style.color = "Blue"
-            showCurrentTurn.textContent = "Player one's turn"
+            showCurrentTurn.textContent = playerOneName.value === "" ? "Player one's turn" : `${playerOneName.value}'s turn`
             game.playRound(e.target.id);
         }
         displayWinner()
@@ -267,18 +252,24 @@ const screenController = () => {
 
     displayWinner = () => {
         if(game.getWinner() === "Player one Won!!") {
-            showCurrentTurn.textContent = game.getWinner();
+            showCurrentTurn.textContent = playerOneName.value === "" ? "Player one Won!!" : `${playerOneName.value} Won!!`;
+            showCurrentTurn.style.color = "red"
         } else if (game.getWinner() === "Player two Won!!") {
-            showCurrentTurn.textContent = game.getWinner();
+            showCurrentTurn.textContent = playerTwoName.value === "" ? "Player Two Won!!" : `${playerTwoName.value} Won!!`;
+            showCurrentTurn.style.color = "blue"
         } else if (game.getTurn() === 9) {
             showCurrentTurn.textContent = "It's a Tie";
+            showCurrentTurn.style.color = "green"
         } else {
             return;
         }
     }
 
     function resetGame() {
-        showCurrentTurn.textContent = "Player one's turn"
+        showCurrentTurn.textContent = ""
+        form.style.display = "flex"
+        showCurrentTurn.style.display = "none"
+        showCurrentTurn.style.color = "white"
         game.getIsOver("reset")
         game.getTurn("reset")
         game.getWinner("reset")
@@ -291,5 +282,4 @@ const screenController = () => {
     }
 }
 
-printBoard()
 screenController()

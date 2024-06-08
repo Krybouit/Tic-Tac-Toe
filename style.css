@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: rgb(53, 52, 52);
+    background-color: #232323;
 }
 
 @font-face {
@@ -19,7 +19,19 @@ header {
     color: white;
     font-family: ColoredCrayons, sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 100px;
-    margin-top: 20px;
+    padding-top: 20px;
+}
+
+header span:nth-child(1) {
+    color: red;
+}
+
+header span:nth-child(2) {
+    color: green;
+}
+
+header span:nth-child(3) {
+    color: blue;
 }
 
 .container {
@@ -30,11 +42,13 @@ header {
 }
 
 .container h2 {
+    display: none;
+    color: white;
     font-family: ColoredCrayons, sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 400;
-    font-size: 50px;
-    margin-top: 20px;
-    border: none;
+    font-size: 60px;
+    margin-top: 32px;
+    margin-bottom: 60px;
 }
 
 .board {
@@ -42,7 +56,7 @@ header {
     grid-template-columns: repeat(3, 160px);
     grid-template-rows: repeat(3, 160px);
     align-content: center;
-    margin-top: 57px;
+    margin-top: 8px;
 }
 
 .cell {
@@ -52,16 +66,60 @@ header {
     border-color: black;
 }
 
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 40px;
+    width: 560px;
+}
+
+input {
+    color: #fff;
+    font-family: ColoredCrayons, sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2rem;
+    background-color: transparent;
+    width: 37%;
+    box-sizing: border-box;
+    padding-inline: 0.5em;
+    padding-block: 0.4em;
+    border: none;
+}
+
+input:hover {
+    background: #4985e01f;
+}
+
+.player-one {
+    border-bottom: 1px solid red
+}
+
+.player-two {
+    border-bottom: 1px solid blue
+}
+
+.start {
+    font-family: ColoredCrayons, sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 55px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.start:active {
+  transform: scale(.88);
+}
+
 .reset {
     font-family: ColoredCrayons, sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 55px;
     margin-top: 50px;
+    color: white;
     background-color: transparent;
-    background-repeat: no-repeat;
     border: none;
     cursor: pointer;
-    overflow: hidden;
-    outline: none;
 }
 
 .reset:hover {
